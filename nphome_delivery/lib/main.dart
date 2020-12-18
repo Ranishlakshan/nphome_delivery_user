@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nphome_delivery/searchApp.dart';
 
+import 'admydata.dart';
+import 'cartview.dart';
 import 'categories.dart';
 import 'firstpg.dart';
 import 'hotdeals.dart';
@@ -29,6 +31,11 @@ class MyApp extends StatelessWidget {
         '/searchtest' : (context) => SearchHere(),
         //HotDeals
         '/hotdeals' : (context) => HotDeals(),
+        //CartView
+        '/cartview' : (context) => CartView(),
+        //AddMyDetails
+        '/admydetails' : (context) => AddMyDetails(),
+        
         
       },
     );

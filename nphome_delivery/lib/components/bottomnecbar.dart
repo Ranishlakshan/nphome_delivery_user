@@ -32,7 +32,7 @@ class _BottomNvBarState extends State<BottomNvBar> {
         buildNavBarIte(Icons.search,1,"/searchtest"),
         buildNavBarIte(Icons.favorite,2,"/hotdeals"),
         buildNavBarIte(Icons.category,3,"/categories"),
-        buildNavBarIte(Icons.shopping_cart,4,"/categories"),
+        buildNavBarIte(Icons.shopping_cart,4,"/cartview"),
         
       ],
     );

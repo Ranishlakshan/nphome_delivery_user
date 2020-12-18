@@ -254,8 +254,8 @@ class AadCardForGrid extends StatelessWidget {
                                         'value1':ad.value1,
                                         'value2':ad.value2,
                                         'value3':ad.value3,
-                                        'count':urnum,
-                                        'sub-total':subtotal,
+                                        'count':urnum.toString(),
+                                        'subtotal':subtotal.toString(),
                                         'value4':DateTime.now().toString().substring(0, DateTime.now().toString().length - 10 ),
                                         });
                                         Navigator.pop(context);
@@ -374,7 +374,7 @@ class AadCardForCardGrid extends StatelessWidget {
             children: <Widget>[
                   SizedBox(width: 5,),
                   Card(
-                child: Text(" Rs "+ad.value2, style:TextStyle(background: Paint()
+                child: Text(" Rs "+ad.subtotal, style:TextStyle(background: Paint()
                         ..strokeWidth = 6.0
                         ..color = Colors.yellow
                         ..style = PaintingStyle.stroke
@@ -390,7 +390,7 @@ class AadCardForCardGrid extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 icon: Icon(Icons.delete),
                 onPressed: (){
-                  //Firestore.instance.collection('cart').document('$email').collection("items").document(ad.docID).delete();
+                  Firestore.instance.collection('cart').document('$email').collection("items").document(ad.docID).delete();
                   
                 },
               ),
@@ -404,10 +404,26 @@ class AadCardForCardGrid extends StatelessWidget {
           SizedBox(height: 2,),
           Row(
             children: <Widget>[
-              Icon(Icons.location_on, color: Colors.redAccent,size: 18,),
+              Icon(Icons.arrow_right, color: Colors.redAccent,size: 18,),
               Expanded(child: Text(ad.value3))
             ],
           ),
+          SizedBox(height: 2,),
+          //
+          //Container(
+          //  alignment: Alignment.bottomRight,
+          //  child: IconButton(
+          //      alignment: Alignment.bottomRight,
+          //      icon: Icon(Icons.delete),
+          //      onPressed: (){
+          //        Firestore.instance.collection('cart').document('$email').collection("items").document(ad.docID).delete();
+          //        
+          //      },
+          //    ),
+          //),
+          //
+          Text("   ${ad.value2} "+"*"+" ${ad.count}   "),
+          //
           Container(
             alignment: Alignment.bottomRight,
             child: Text(" ${ad.value4}  ",style: TextStyle(color: Colors.grey),),

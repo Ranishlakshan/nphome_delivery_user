@@ -73,6 +73,14 @@ class _FirstPageState extends State<FirstPage> {
        bottomNavigationBar: BottomNvBar(),
       appBar: AppBar(
         title: Text('NP Home Delivery'),
+        actions: <Widget>[
+          IconButton(
+             icon: Icon(Icons.add),
+              onPressed: (){
+                Navigator.pushNamed(context, '/admydetails');
+              },
+          )
+        ],
       ),
       body: ListView(
         ///////////////////////
@@ -131,6 +139,7 @@ class _FirstPageState extends State<FirstPage> {
           MainListView(),
           SizedBox(height: 20.0,),
           Text('ranish'),
+          //Text(car.toString()),
           StreamBuilder(
             stream: car,
             builder: (context, snapshot)  {

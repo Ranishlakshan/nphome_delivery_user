@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../login_page.dart';
+
 class CarModel {
   String value1;
   String value2;
@@ -24,10 +26,22 @@ class CarModel {
     
   }
 
+  getCart() async {
+    return await Firestore.instance.collection('cart').document('$email').collection("items").snapshots();
+    
+  }
+
   getHotdealsData() async {
     return await Firestore.instance.collection('hotdeals').snapshots();
     
   }
+  //getUserData
+  getUserData() async {
+    return await Firestore.instance.collection('users').snapshots();
+    
+  }
+
+
 
 //void setcarBrand(String carBrand){
 //this.carBrand = carBrand;
@@ -78,12 +92,16 @@ class ItemModel {
   //String caryear;
   //String carimage;
   String docID;
+  String count;
+  String subtotal;
 
-  ItemModel(String value1, String value2,String value3, String value4,String docID){
+  ItemModel(String value1, String value2,String value3, String value4,String docID,String subtotal,String count){
     this.value1 = value1;
     this.value2 = value2;
     this.value3 = value3;
     this.value4 = value4;
+    this.subtotal = subtotal;
+    this.count = count;
     //this.carimage = carimage;
     this.docID = docID;
   }
