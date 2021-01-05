@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
+import '';
 
 class MainListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80.0,
+      height: 70.0,
       child: ListView(
         shrinkWrap : true,
         scrollDirection: Axis.horizontal,
@@ -14,8 +14,8 @@ class MainListView extends StatelessWidget {
           InkWell(
             child: Column(
                children: <Widget>[
-                 Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
+                Icon(Icons.category, size: 40,color: Colors.green,),
+                SizedBox(height: 8,),
                 //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
                 Text('Catagories')
                  
@@ -25,12 +25,12 @@ class MainListView extends StatelessWidget {
               Navigator.pushNamed(context, "/categories");
             },
           ),
-          SizedBox(width: 15,),
+          SizedBox(width: 25,),
           InkWell(
             child: Column(
                children: <Widget>[
-                 Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
+                 Icon(Icons.favorite, size: 40,color: Colors.red,),
+                SizedBox(height: 8,),
                 //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
                 Text('Hot Deals')
                  
@@ -40,111 +40,99 @@ class MainListView extends StatelessWidget {
               Navigator.pushNamed(context, "/hotdeals");
             },
           ),
-          SizedBox(width: 15,),
+          SizedBox(width: 25,),
+          
           InkWell(
             child: Column(
                children: <Widget>[
-                Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
+                Icon(Icons.local_pharmacy, size: 40,color: Colors.red,),
+                SizedBox(height: 8,),
                 //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
-                Text('Catagories')
+                Text('Pharmacy')
                  
                ],
             ),
             onTap: (){
-              Navigator.pushNamed(context, "/catago");
+              Navigator.pushNamed(context, "/pharmacyInterface");
             },
           ),
-          SizedBox(width: 15,),
+          SizedBox(width: 25,),
           InkWell(
             child: Column(
                children: <Widget>[
-                 Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
+                Icon(Icons.graphic_eq, size: 40,color: Colors.blue),
+                SizedBox(height: 8,),
                 //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
-                Text('Catagories')
+                Text('ගෑස් වර්ග')
                  
                ],
             ),
             onTap: (){
-              Navigator.pushNamed(context, "/catago");
+              Navigator.pushNamed(context, "/specialGas");
             },
           ),
-          SizedBox(width: 15,),
+          SizedBox(width: 25,),
           InkWell(
             child: Column(
                children: <Widget>[
-                 Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
+                Icon(Icons.book, size: 40,color: Colors.yellow,),
+                SizedBox(height: 8,),
                 //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
-                Text('Catagories')
+                Text('Stationary')
                  
                ],
             ),
             onTap: (){
-              Navigator.pushNamed(context, "/catago");
+              Navigator.pushNamed(context, "/specialStationary");
             },
           ),
-          SizedBox(width: 15,),
+          SizedBox(width: 25,),
           InkWell(
             child: Column(
                children: <Widget>[
-                 Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
+                Icon(Icons.face, size: 40,color: Colors.pink),
+                SizedBox(height: 8,),
                 //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
-                Text('Catagories')
+                Text('Facial Care')
                  
                ],
             ),
             onTap: (){
-              Navigator.pushNamed(context, "/catago");
+              Navigator.pushNamed(context, "/specialFacialCare");
             },
           ),
-          SizedBox(width: 15,),
+          SizedBox(width: 25,),
           InkWell(
             child: Column(
                children: <Widget>[
-                 Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
+                 Icon(Icons.face, size: 40,color: Colors.grey),
+                SizedBox(height: 8,),
                 //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
-                Text('Catagories')
+                Text('Hair Care')
                  
                ],
             ),
             onTap: (){
-              Navigator.pushNamed(context, "/catago");
+              Navigator.pushNamed(context, "/specialHairCare");
             },
           ),
-          SizedBox(width: 15,),
-          InkWell(
-            child: Column(
-               children: <Widget>[
-                 Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
-                //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
-                Text('Catagories')
-                 
-               ],
-            ),
-            onTap: (){
-              Navigator.pushNamed(context, "/catago");
-            },
-          ),
-          SizedBox(width: 15,),
-          InkWell(
-            child: Column(
-               children: <Widget>[
-                 Icon(Icons.access_alarm),
-                 SizedBox(height: 10,),
-                //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
-                Text('Catagories')
-                 
-               ],
-            ),
-            onTap: (){
-              Navigator.pushNamed(context, "/catago");
-            },
-          ),
+          SizedBox(width: 25,),
+          //InkWell(
+          //  child: Column(
+          //     children: <Widget>[
+          //      Icon(Icons.more, size: 40,),
+          //      SizedBox(height: 8,),
+          //      //Image(image: AssetImage('images/listview/catagory.png'),fit: BoxFit.cover,height: 50,width: 50,),
+          //      Text('Essentials')
+          //       
+          //     ],
+          //  ),
+          //  onTap: (){
+          //    Navigator.pushNamed(context, "/specialEssentials");
+          //  },
+          //),
+           SizedBox(width: 15,),
+          
 
           
           //InkWell(

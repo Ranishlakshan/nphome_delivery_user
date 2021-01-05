@@ -326,7 +326,7 @@ Widget getTitle(){
                 color: Colors.black,
               )
               ),
-            Text("Rs ${price}",
+            Text("Rs ${price} /=",
               style: new  TextStyle(fontSize: 26,background: Paint()
                     ..strokeWidth = 6.0
                     ..color = Colors.yellow

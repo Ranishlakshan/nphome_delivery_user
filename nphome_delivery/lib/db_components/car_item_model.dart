@@ -122,3 +122,146 @@ getSearch(String text) async {
 
 }
 }
+
+
+class UserModel {
+  String useraddress;
+  String userid;
+  String username;
+  String userphone;
+  String docID;
+  
+  UserModel(String useraddress, String userid,String username, String userphone,String docID){
+    this.useraddress = useraddress;
+    this.userid = userid;
+    this.username = username;
+    this.userphone = userphone;
+    this.docID = docID;
+    
+  }
+
+  
+  //getHotdealsData() async {
+  //  return await Firestore.instance.collection('hotdeals').snapshots();
+  //  
+  //}
+
+  getCurrentUserData() async {
+    return await Firestore.instance.collection('users').document('$email').snapshots();
+    
+  }
+  getCurrentUserDatanew() async {
+    return await Firestore.instance.collection('users').snapshots();
+    
+  }
+
+
+
+
+//String getdocID(){
+//  return docID;
+//}
+
+
+
+}
+
+
+class OrderModel {
+  String value1;
+  String value2;
+  String value3;
+  String orderstate;
+  String total;
+  //String caryear;
+  //String carimage;
+  String docID;
+  String useraddress;
+  String userid;
+  String username;
+  String userphone;
+
+  OrderModel(String value1, String value2,String value3, String orderstate, String total,String docID,
+  String useraddress,String userid,String username,String userphone){
+    this.value1 = value1;
+    this.value2 = value2;
+    this.value3 = value3;
+    this.orderstate = orderstate;
+    this.total = total;
+    this.docID = docID;
+    this.useraddress = useraddress;
+    this.userid = userid;
+    this.username = username;
+    this.userphone = userphone;
+  }
+
+  getOrderData() async {
+    return await Firestore.instance.collection('orders').where('value2',isEqualTo: '$email').snapshots();
+  }
+
+  getAcceptedOrderData() async {
+    return await Firestore.instance.collection('orders').where('orderstate',isEqualTo: "accepted").snapshots();
+  }
+  //getDeliveredOrderData
+  getDeliveredOrderData() async {
+    return await Firestore.instance.collection('orders').where('orderstate',isEqualTo: "delivered").snapshots();
+  }
+  
+//  getHotdealsData() async {
+//    return await Firestore.instance.collection('hotdeals').snapshots();
+//    
+//  }
+//
+//String getdocID(){
+//  return docID;
+//}
+//
+//getSearch(String text) async {
+//    return await Firestore.instance.collection('ads').snapshots();
+//
+
+}
+
+
+
+
+
+class PharmacyModel {
+  String email;
+  String value3;
+  String docID;
+  String useraddress;
+  String userid;
+  String username;
+  String userphone;
+  String prescriptionimage;
+
+  PharmacyModel(String email,String value3,String docID,
+  String useraddress,String userid,String username,String userphone,String prescriptionimage){
+    this.email = email;
+    this.value3 = value3;
+    this.docID = docID;
+    this.useraddress = useraddress;
+    this.userid = userid;
+    this.username = username;
+    this.userphone = userphone;
+    this.prescriptionimage = prescriptionimage;
+  }
+
+
+
+
+  getPharmacyData() async {
+    return await Firestore.instance.collection('pharmacy').snapshots();
+  }
+//
+  //getAcceptedOrderData() async {
+  //  return await Firestore.instance.collection('orders').where('orderstate',isEqualTo: "accepted").snapshots();
+  //}
+  ////getDeliveredOrderData
+  //getDeliveredOrderData() async {
+  //  return await Firestore.instance.collection('orders').where('orderstate',isEqualTo: "delivered").snapshots();
+  //}
+  
+
+}

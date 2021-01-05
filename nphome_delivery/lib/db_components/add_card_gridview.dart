@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 //import 'package:number_inc_dec/number_inc_dec.dart';
 import '../itemview.dart';
 import '../login_page.dart';
+import '../orderview.dart';
+import '../pharmacyItemView.dart';
 import 'car_item_model.dart';
 
 //AadCardForGrid
@@ -26,14 +28,7 @@ class AadCardForGrid extends StatelessWidget {
         children: <Widget>[
           Image.network(ad.carimage),
           
-          //Center(child: Text(ad.value2,textDirection: ,),)
-          //Card(
-          //  child: Text("Rs "+ad.value2),
-          //  color: Colors.yellow,
-          //  margin: EdgeInsets.all(10),
-          //  
-          //  //shape: CircleBorder(),  
-          //),
+          
         ],
       );
     } else {
@@ -116,7 +111,7 @@ class AadCardForGrid extends StatelessWidget {
             children: <Widget>[
               SizedBox(width: 5,),
               Card(
-            child: Text("Unit Price : Rs "+ad.value2, style:TextStyle(background: Paint()
+            child: Text("Price : Rs "+ad.value2+' /=', style:TextStyle(background: Paint()
                     ..strokeWidth = 6.0
                     ..color = Colors.yellow
                     ..style = PaintingStyle.stroke
@@ -428,6 +423,187 @@ class AadCardForCardGrid extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: Text(" ${ad.value4}  ",style: TextStyle(color: Colors.grey),),
           ),
+        ],
+      ),
+    )
+    );
+  }
+}
+
+
+
+//CARD OF THE ORDER Viewport
+class AadOrderCardGrid extends StatelessWidget {
+
+  AadOrderCardGrid(this.ad);
+  String documentid;
+  OrderModel ad;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: (){
+        //'/itemview'
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Orderview(docID123: ad.docID)));
+      },
+      child: Card(
+        child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            //alignment: Alignment.bottomRight,
+            child: Text(" ${ad.docID}  ",style: TextStyle(color: Colors.grey),),
+          ),
+          SizedBox(height: 5,),  
+          Text("Customer ID : "+ '${ad.userid}'+ " | name :  "+  '${ad.username}'.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+          SizedBox(height: 2,),
+          //Text('  Rs ${ad.value2}'),
+          Row(
+            children: <Widget>[
+                  SizedBox(width: 5,),
+                  Card(
+                child: Text(" Rs "+ad.total, style:TextStyle(background: Paint()
+                        ..strokeWidth = 6.0
+                        ..color = Colors.yellow
+                        ..style = PaintingStyle.stroke
+                        ..strokeJoin = StrokeJoin.round
+                        ) 
+                      ),
+                //color: Colors.yellow,
+
+                //margin: EdgeInsets.all(5),
+              ),
+              SizedBox(width: 30,),
+              //IconButton(
+              //  alignment: Alignment.bottomRight,
+              //  icon: Icon(Icons.delete),
+              //  onPressed: (){
+              //    //Firestore.instance.collection('orders').document(ad.docID).delete();
+              //    
+              //    
+              //  },
+              //),
+              
+            ],
+          ),
+          //const DecoratedBox(
+          //  decoration: const BoxDecoration(color: Colors.blue,),
+          //  child: const Text('Some text...'),
+          //),
+          SizedBox(height: 2,),
+          Row(
+            children: <Widget>[
+              Icon(Icons.location_on, color: Colors.redAccent,size: 18,),
+              Expanded(child: Text(ad.value3))
+            ],
+          ),
+          Container(
+            alignment: Alignment.bottomRight,
+            child: Text("Order State : ${ad.orderstate}  ",style: TextStyle(color: Colors.grey),),
+          ),
+        ],
+      ),
+    )
+    );
+  }
+}
+
+
+
+//Pharmacy Hostory view
+class AadPharmacyCardGrid extends StatelessWidget {
+
+  AadPharmacyCardGrid(this.ad);
+  String documentid;
+  PharmacyModel ad;
+
+  Widget _buildImageWidget() {
+    //documentid = ad.docID;
+    if (ad.prescriptionimage != null && ad.prescriptionimage != '') {
+      //return Image.network(ad.carimage);
+      return Stack(
+        children: <Widget>[
+          Image.network(ad.prescriptionimage),
+          
+          
+        ],
+      );
+    } else {
+      return Image.network('https://uae.microless.com/cdn/no_image.jpg');
+    }
+    
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: (){
+        //'/itemview'
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => PharmacyItemView(docID123: ad.docID)));
+      },
+      child: Card(
+        child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            //alignment: Alignment.bottomRight,
+            child: Text(" ${ad.docID}  ",style: TextStyle(color: Colors.grey),),
+          ),
+          SizedBox(height: 5,),  
+          Text("Customer ID : "+ '${ad.userid}'+ " | name :  "+  '${ad.username}'.toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+          SizedBox(height: 2,),
+          //Text('  Rs ${ad.value2}'),
+          _buildImageWidget(),
+          SizedBox(height: 2,),
+          Row(
+            children: <Widget>[
+                  SizedBox(width: 5,),
+              //    Card(
+              //  child: Text(" Rs "+ad.total, style:TextStyle(background: Paint()
+              //          ..strokeWidth = 6.0
+              //          ..color = Colors.yellow
+              //          ..style = PaintingStyle.stroke
+              //          ..strokeJoin = StrokeJoin.round
+              //          ) 
+              //        ),
+              //  //color: Colors.yellow,
+//
+              //  //margin: EdgeInsets.all(5),
+              //),
+              SizedBox(width: 30,),
+              //IconButton(
+              //  alignment: Alignment.bottomRight,
+              //  icon: Icon(Icons.delete),
+              //  onPressed: (){
+              //    //Firestore.instance.collection('orders').document(ad.docID).delete();
+              //    
+              //    
+              //  },
+              //),
+              
+            ],
+          ),
+          //const DecoratedBox(
+          //  decoration: const BoxDecoration(color: Colors.blue,),
+          //  child: const Text('Some text...'),
+          //),
+          SizedBox(height: 2,),
+          Row(
+            children: <Widget>[
+              Icon(Icons.location_on, color: Colors.redAccent,size: 18,),
+              Expanded(child: Text(ad.value3))
+            ],
+          ),
+          //Container(
+          //  alignment: Alignment.bottomRight,
+          //  child: Text("Order State : ${ad.orderstate}  ",style: TextStyle(color: Colors.grey),),
+          //),
         ],
       ),
     )

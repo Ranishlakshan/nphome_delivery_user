@@ -5,6 +5,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'components/bottomnecbar.dart';
 import 'db_components/add_card_gridview.dart';
 import 'db_components/car_item_model.dart';
+import 'drawer.dart';
+import 'login_page.dart';
 
 
 var locationsnap = Firestore.instance.collection("search_location").snapshots();
@@ -28,6 +30,10 @@ class _SearchHereState extends State<SearchHere> {
   String carYear;
   String carImage;
   String docID;
+
+  String yesno;
+  var myuser;
+  UserModel userobj = new UserModel("","","","",""); 
 
   //String dis1 = dis;
 
@@ -60,6 +66,17 @@ class _SearchHereState extends State<SearchHere> {
       });
     });
     super.initState();
+
+    userobj.getCurrentUserDatanew().then((result) {
+      setState(() {
+        myuser = result;
+      });
+    });
+    //print("---------------------------Email is $email");
+    //signInWithGoogle();
+    
+    super.initState();
+
   }
 
   String searchValue;
@@ -73,7 +90,7 @@ class _SearchHereState extends State<SearchHere> {
     return Scaffold(
       bottomNavigationBar: BottomNvBar(),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.amber[400],
         title: Text("Search",style: TextStyle( letterSpacing: 2),),
         
         actions: <Widget>[
@@ -87,14 +104,92 @@ class _SearchHereState extends State<SearchHere> {
               },
             ),
             IconButton(
-              icon: Icon(Icons.apps),
-              onPressed: () {},
-            ),
+             icon: Icon(Icons.shopping_cart),
+              onPressed: (){
+                if(yesno.contains('yes')){
+                  Navigator.pushNamed(context, '/cartview');
+                }
+                else{
+                  Navigator.pushNamed(context, '/admydetails');
+                }
+                //Navigator.pushNamed(context, '/cartview');
+              },
+              //cartview   
+          )
           ],
       ),
-      //drawer: MyDrawer(),
+      drawer: MyDrawer(),
       body: ListView(
         children: <Widget>[
+          StreamBuilder(
+            stream: myuser,
+            builder: (context, snapshot)  {
+              if(snapshot.hasData){
+                String temp;
+                
+                print("LENGTH  :::::::::::::"+snapshot.data.documents.length.toString());
+                for (int i = 0; i < snapshot.data.documents.length; i++){
+                  temp = snapshot.data.documents[i].documentID;
+                  print("DATABASE MAIL :::::::::::::::::::::"+temp);
+                  if(temp.contains('$email')){
+                    yesno = 'yes';
+                    print('yes');
+                    break;
+                  }
+                  else{
+                    yesno = 'no';
+                    print('no');
+                  }
+                  
+                }
+                //print("DATABASE MAIL :::::::::::::::::::::"+temp);
+                if(yesno.contains('yes')){
+
+                  return Text('');
+                }
+                else{
+                  //Navigator.popAndPushNamed(context, '/admydetails');
+                        
+              
+                //return Text('no data');
+                  //Navigator.pushNamed(context, '/admydetails');
+                  return Column(
+                    children: <Widget>[
+                      SizedBox(height: 30,),
+                      Text('Before Start, Please',style: TextStyle(fontSize: 20),),
+                      Text('Enter Your Details',style: TextStyle(fontSize: 20),),
+                      Text('clicking below button',style: TextStyle(fontSize: 20),),
+                      SizedBox(height: 15,),
+                      Text('භාණ්ඩ තෝරාගැනීමට පෙර',style: TextStyle(fontSize: 20),),
+                      Text('ඔබගේ නම,ලිපිනය,දුරකථන අංකය',style: TextStyle(fontSize: 20),),
+                      Text('ඇතුලත් කිරීමට පහත බොත්තම ඔබන්න',style: TextStyle(fontSize: 20),),
+                      SizedBox(height: 15,),
+                      FloatingActionButton(
+                        child: Text('ADD'),
+                        onPressed: (){
+                          Navigator.pushNamed(context, '/admydetails');
+                        },
+                      ),
+                      SizedBox(height: 40,),
+                    ],
+                  );
+                }  
+                //return Text('ranish');
+                //String useraddress,userid,username,userphone,docmailID;
+                //print('MYUSERADDRESS 1 :::::::::;:::'+useraddress);
+                //docmailID = snapshot.data.documentID;
+                //useraddress = snapshot.data['useraddress'];
+                //userid = snapshot.data['userid'];
+                //useraddress = "ddd";
+                //print("SNAPSHOT DATA :::::::::::::::::::"+snapshot.data.documents[1].documentID);
+                //return Text(' have data');
+                //return Text("I have data"+ docmailID+useraddress+userid+username+userphone);
+              }
+              else{
+                return Text("I have no data");
+              }
+            },
+          ),
         //ADD new location selectdetails here
         SizedBox(height: 10,),
         
@@ -125,7 +220,7 @@ class _SearchHereState extends State<SearchHere> {
                 pressed = "A";
               });
             },
-            color: Color(0xff11b719),
+            color: Colors.blue,
             
               textColor: Colors.white,
               child: Padding(

@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:nphome_delivery/searchApp.dart';
+import 'package:nphome_delivery/viewmydata.dart';
 
+import 'aboutus.dart';
+import 'addPharmacyScript.dart';
 import 'admydata.dart';
 import 'cartview.dart';
 import 'categories.dart';
 import 'firstpg.dart';
+import 'firstpgtemp.dart';
 import 'hotdeals.dart';
 import 'login_page.dart';
+import 'mydetails.dart';
+import 'myorders.dart';
+import 'pharmacyHistory.dart';
+import 'pharmacyinteeface.dart';
+import 'specialcategory/specialFacialCare.dart';
+import 'specialcategory/specialHairCare.dart';
+import 'specialcategory/specialStationary.dart';
+import 'specialcategory/specialgas.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,8 +47,36 @@ class MyApp extends StatelessWidget {
         '/cartview' : (context) => CartView(),
         //AddMyDetails
         '/admydetails' : (context) => AddMyDetails(),
+        //myorders
+        '/myorders' : (context) => NewOrders(),
+
+        //SpecialElectronics
+        '/specialStationary' : (context) => SpecialElectronics(),
+        //SpecialGas
+        '/specialGas' : (context) => SpecialGas(),
+        //SpecialFacialCare
+        '/specialFacialCare' : (context) => SpecialFacialCare(),
+        //SpecialHairCare
+        '/specialHairCare' : (context) => SpecialHairCare(),
+
+        //AddPharmacyScript
+        '/addPharmacyScript' : (context) => AddPharmacyScript(),
+        //PharmacyInterface
+        '/pharmacyInterface' : (context) => PharmacyInterface(),
+        //PharmacyHistory
+        '/pharmacyHistory' : (context) => PharmacyHistory(),
+        //MydetailsInterface
+        '/mydetailsInterface' : (context) => MydetailsInterface(),
+        //ViewMyData
+        '/mydataview' : (context) => ViewMyData(),
+        //aboutus
+        '/aboutus' : (context) => AboutUS(),
+        //FirstPageTemp
+        '/firstpagedump' : (context) => FirstPageTemp(),
         
+
         
+
       },
     );
   }

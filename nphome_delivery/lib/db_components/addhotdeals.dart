@@ -111,7 +111,7 @@ class hotAadCardForGrid extends StatelessWidget {
             children: <Widget>[
               SizedBox(width: 5,),
               Card(
-            child: Text(" Rs "+ad.value2, style:TextStyle(background: Paint()
+            child: Text(" Rs "+ad.value2 +"/=", style:TextStyle(background: Paint()
                     ..strokeWidth = 6.0
                     ..color = Colors.yellow
                     ..style = PaintingStyle.stroke
@@ -131,8 +131,9 @@ class hotAadCardForGrid extends StatelessWidget {
           SizedBox(height: 2,),
           Row(
             children: <Widget>[
-              Icon(Icons.location_on, color: Colors.redAccent,size: 18,),
-              Expanded(child: Text(ad.value3))
+              Text('Old Price :'),
+              //Icon(Icons.arrow_drop_down, color: Colors.redAccent,size: 18,),
+              Expanded(child: Text(" Rs "+ad.value3 +' /=',style: TextStyle(decoration: TextDecoration.lineThrough),))
             ],
           ),
           Container(

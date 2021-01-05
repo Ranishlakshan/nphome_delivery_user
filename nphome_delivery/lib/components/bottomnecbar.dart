@@ -32,7 +32,7 @@ class _BottomNvBarState extends State<BottomNvBar> {
         buildNavBarIte(Icons.search,1,"/searchtest"),
         buildNavBarIte(Icons.favorite,2,"/hotdeals"),
         buildNavBarIte(Icons.category,3,"/categories"),
-        buildNavBarIte(Icons.shopping_cart,4,"/cartview"),
+        buildNavBarIte(Icons.local_pharmacy,4,"/pharmacyInterface"),
         
       ],
     );
@@ -40,6 +40,7 @@ class _BottomNvBarState extends State<BottomNvBar> {
 
   Widget buildNavBarIte(IconData icon,int index,String route) {
     return GestureDetector(
+      
           onTap: (){
             setState(() {
               selectedindex=index;              
@@ -47,6 +48,7 @@ class _BottomNvBarState extends State<BottomNvBar> {
             Navigator.pushReplacementNamed(context, route);
             
           },
+          
           child: Container(
           height: 50,
           width: MediaQuery.of(context).size.width/5,

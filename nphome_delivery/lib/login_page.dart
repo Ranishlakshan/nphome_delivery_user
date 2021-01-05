@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import 'admydata.dart';
+import 'db_components/car_item_model.dart';
 import 'firstpg.dart';
+import 'firstpgtemp.dart';
 
 
 
@@ -13,7 +16,9 @@ String imageUrl;
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
-
+//
+  
+//
 
 class LoginPage extends StatefulWidget {
   @override
@@ -25,14 +30,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     // TODO: implement initState
-    if(email!=null){
-
-      print("NO EMAIL");
-    }
-    else{
-      print("I HAVE EMAIL"+ '$email');
-    }
-    super.initState();
+    //if(email==null){
+//
+    //  print("NO EMAIL");
+    //}
+    //else{
+    //  print("I HAVE EMAIL"+ '$email');
+    //}
+    //super.initState();
+    
 
   }
   
@@ -46,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+            
               FlutterLogo(size: 150),
               SizedBox(height: 50),
               _signInButton(),
@@ -66,44 +73,49 @@ class _LoginPageState extends State<LoginPage> {
         MaterialPageRoute(
           builder: (context) {
             //start new add 
-            //if(email != null){
-            //  return FirstPage();
-            //}
-            //else{
-            //  return LoginPage(); 
-            //}
-            //-end new add
-            return FirstPage();
-          },
-        ),
-      );
-    });
-  },
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-      highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+                        //checkuser=true;
+                        //print("RANISH ::::::::::::::::"+yesno);
+                        //if(yesno.contains('yes')){
+                        //   return FirstPage();
+                        //}
+                        //else{
+                        //  return AddMyDetails();
+                        //}
+                        //-end new add
+                        //return FirstPageTemp();
+                        return FirstPage();
+                      },
+                    ),
+                  );
+                });
+              },
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+                  highlightElevation: 0,
+                  borderSide: BorderSide(color: Colors.grey),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text(
+                            'Sign in with Google',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              }
             
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                'Sign in with Google',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+              
 }
 
 Future<String> signInWithGoogle() async {
@@ -138,7 +150,7 @@ Future<String> signInWithGoogle() async {
 
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
-
+  //checkuser =true;
   return 'signInWithGoogle succeeded: $user';
 }
 

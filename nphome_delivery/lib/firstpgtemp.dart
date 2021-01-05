@@ -10,12 +10,12 @@ import 'db_components/car_item_model.dart';
 import 'drawer.dart';
 import 'login_page.dart';
 
-class FirstPage extends StatefulWidget {
+class FirstPageTemp extends StatefulWidget {
   @override
-  _FirstPageState createState() => _FirstPageState();
+  _FirstPageTempState createState() => _FirstPageTempState();
 }
 
-class _FirstPageState extends State<FirstPage> {
+class _FirstPageTempState extends State<FirstPageTemp> {
   
   var carosal_img;
   List<String> _listOfImages = <String>[];
@@ -95,7 +95,7 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       bottomNavigationBar: BottomNvBar(),
+      //bottomNavigationBar: BottomNvBar(),
       appBar: AppBar(
         backgroundColor: Colors.amber[400],
         title: Text('NP Home Delivery'),
@@ -123,7 +123,7 @@ class _FirstPageState extends State<FirstPage> {
           )
         ],
       ),
-      drawer: MyDrawer(),
+      //drawer: MyDrawer(),
       body: ListView(
         ///////////////////////
         shrinkWrap: true,
@@ -153,15 +153,9 @@ class _FirstPageState extends State<FirstPage> {
                 }
                 //print("DATABASE MAIL :::::::::::::::::::::"+temp);
                 if(yesno.contains('yes')){
-
-                  return Text('');
+                  return Text(' ');  
                 }
                 else{
-                  //Navigator.popAndPushNamed(context, '/admydetails');
-                        
-              
-                //return Text('no data');
-                  //Navigator.pushNamed(context, '/admydetails');
                   return Column(
                     children: <Widget>[
                       SizedBox(height: 30,),
@@ -199,58 +193,58 @@ class _FirstPageState extends State<FirstPage> {
               }
             },
           ),
-          StreamBuilder(
-                stream: carosal_img,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    _listOfImages = [];
-                    for (int i = 0; i < snapshot.data['urls'].length; i++) {
-                      _listOfImages.add(snapshot.data['urls'][i]);
-                    }
-                  }
-                  return CarouselSlider(
-                      items: _listOfImages.map((e){
-                        return ClipRRect(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10.0)),
-                            child: Container(
-                              height: 200.0,
-                              margin: EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                              ),
-                              child: GestureDetector(
-                                  //image appear in correct width and height
-                                  //child: Image.network(e, fit: BoxFit.fill),
-                                  child: Image.network(e),
-                                  onTap: (){
-                                    Navigator.pushNamed(context, "/hotdeals");
-                                  },
-                                  
-                                  ),
-                            ));
-                      }).toList(),
-                      options: CarouselOptions(
-                        height: 300,
-                        aspectRatio: 16 / 9,
-                        viewportFraction: 0.8,
-                        initialPage: 0,
-                        enableInfiniteScroll: true,
-                        reverse: false,
-                        autoPlay: true,
-                        autoPlayInterval: Duration(seconds: 3),
-                        autoPlayAnimationDuration: Duration(milliseconds: 800),
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        enlargeCenterPage: true,
-                        scrollDirection: Axis.horizontal,
-                      ));
-                }
-          ),
-          SizedBox(height: 20,),
-          MainListView(),
-          SizedBox(height: 20.0,),
-          //Text('ranish'),
-          //Text(car.toString()),
+          //StreamBuilder(
+          //      stream: carosal_img,
+          //      builder: (context, snapshot) {
+          //        if (snapshot.hasData) {
+          //          _listOfImages = [];
+          //          for (int i = 0; i < snapshot.data['urls'].length; i++) {
+          //            _listOfImages.add(snapshot.data['urls'][i]);
+          //          }
+          //        }
+          //        return CarouselSlider(
+          //            items: _listOfImages.map((e){
+          //              return ClipRRect(
+          //                  borderRadius:
+          //                      BorderRadius.all(Radius.circular(10.0)),
+          //                  child: Container(
+          //                    height: 200.0,
+          //                    margin: EdgeInsets.all(10.0),
+          //                    decoration: BoxDecoration(
+          //                      color: Colors.white,
+          //                    ),
+          //                    child: GestureDetector(
+          //                        //image appear in correct width and height
+          //                        //child: Image.network(e, fit: BoxFit.fill),
+          //                        child: Image.network(e),
+          //                        onTap: (){
+          //                          Navigator.pushNamed(context, "/hotdeals");
+          //                        },
+          //                        
+          //                        ),
+          //                  ));
+          //            }).toList(),
+          //            options: CarouselOptions(
+          //              height: 300,
+          //              aspectRatio: 16 / 9,
+          //              viewportFraction: 0.8,
+          //              initialPage: 0,
+          //              enableInfiniteScroll: true,
+          //              reverse: false,
+          //              autoPlay: true,
+          //              autoPlayInterval: Duration(seconds: 3),
+          //              autoPlayAnimationDuration: Duration(milliseconds: 800),
+          //              autoPlayCurve: Curves.fastOutSlowIn,
+          //              enlargeCenterPage: true,
+          //              scrollDirection: Axis.horizontal,
+          //            ));
+          //      }
+          //),
+          //SizedBox(height: 20,),
+          //MainListView(),
+          //SizedBox(height: 20.0,),
+          ////Text('ranish'),
+          ////Text(car.toString()),
           StreamBuilder(
             stream: car,
             builder: (context, snapshot)  {

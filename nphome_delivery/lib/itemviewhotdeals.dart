@@ -121,53 +121,16 @@ class _ItemViewhotState extends State<ItemViewhot> {
                         scrollDirection: Axis.horizontal,
                       ));
                 }),
-          Text(' -------------- '),
+          //Text(' -------------- '),
           //Text(title),
           getTitle(),
           //getMain(),
-          Text(' -------------- '),
+          //Text(' -------------- '),
           getItems(),
           SizedBox(height:35),
-          Text(' --- START --- '),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
-          //Text('Nimasha'),
           
           getRow(),
 
-          //Row(
-          //  mainAxisAlignment: MainAxisAlignment.center,
-          //  children: <Widget>[
-          //    RaisedButton(
-          //    child: Text(
-          //      "call $number",
-          //    ),
-          //    onPressed: () {
-          //      launch("tel:$number");
-          //    }
-          //  ),
-          //  SizedBox(width: 40.0,),
-          //  RaisedButton(
-          //    child: Text(
-          //      "message $number",
-          //    ),
-          //    onPressed: () {
-          //      launch("sms:$number");
-          //    },
-          //  ),
-          //
-          //
-          //  ],
-          //),
-          Text(' --- END --- '),
           
         ],
       )
@@ -232,60 +195,7 @@ Widget getRow(){
           children: <Widget>[
             Text(desc,style: TextStyle(fontSize: 18),),
             SizedBox(height: 20,),
-            Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              RaisedButton(
-              color: Colors.blueAccent,
-              highlightColor: Colors.lightBlue,
-              child: Text(
-                "call $numb",
-              ),
-              onPressed: () {
-                //launch("tel:$numb");
-              }
-            ),
-            SizedBox(width: 20.0,),
-            //RaisedButton(
-            //  color: Colors.blueAccent,
-            //  highlightColor: Colors.lightBlue,
-            //  child: Text(
-            //    "message $numb",
-            //  ),
-            //  onPressed: () {
-            //    launch("sms:$numb");
-            //  },
-            //),
-            //SizedBox(width: 20.0,),
-            //RaisedButton(
-            //  color: Colors.green,
-            //  child: Text("WhatsApp"),
-            //  onPressed: () async {
-            //    print(numb.length);
-            //    String whatsapp;
-            //    if(numb[0]=="+" ){
-            //      //+947118869 5 0
-            //      //01234567891011
-            //      whatsapp=numb;
-//
-            //    }
-            //    else if(numb.length==10){
-            //      var sub = numb.substring(numb.length - 9);
-            //      print("---------------");
-            //      whatsapp = "+94"+sub;
-            //      print(sub);
-            //      print("final : "+whatsapp);
-            //    }
-//
-//
-            //  var whatsappUrl ="whatsapp://send?phone=$whatsapp";
-            //  await canLaunch(whatsappUrl)? launch(whatsappUrl):print("open whatsapp app link or do a snackbar with notification that there is no whatsapp installed");
-            //  },
-            //),
-
-
-            ],
-          )
+            
           ],
         );
 
